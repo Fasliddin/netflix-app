@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   lottie: ^2.7.0
   flutter_carousel_widget: ^2.2.0
+  url_launcher: ^6.2.3
 
 dev_dependencies:
   flutter_test:
