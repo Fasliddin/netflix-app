@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/components/appbar.dart';
-import 'package:netflix/components/onboarding.dart';
 import 'package:netflix/data.dart/colors.dart';
+import 'package:netflix/data.dart/variables.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -27,8 +27,12 @@ class _OnBoardingState extends State<OnBoarding> {
         actions: [
           TextButton(
             onPressed: () {
-              print(size.width,);
-              print(size.height,);
+              print(
+                size.width,
+              );
+              print(
+                size.height,
+              );
             },
             child: Text(
               "Privacy".toUpperCase(),
@@ -40,7 +44,7 @@ class _OnBoardingState extends State<OnBoarding> {
           TextButton(
             onPressed: () {},
             child: Text(
-              "Log in".toUpperCase(),
+              "Sign in".toUpperCase(),
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -48,7 +52,7 @@ class _OnBoardingState extends State<OnBoarding> {
           ),
           PopupMenuButton<SampleItem>(
             initialValue: selectedMenu,
-            
+
             // Callback that sets the selected popup menu item.
             onSelected: (SampleItem item) {
               setState(() {
@@ -72,12 +76,12 @@ class _OnBoardingState extends State<OnBoarding> {
         child: SizedBox(
           width: size.width,
           height: size.height,
-          child: PageView(
-            children: [
-              first(),
-              second(),
-            ],
-            scrollDirection: Axis.vertical,
+          child: PageView.builder(
+            controller: pageControllera,
+            itemCount: onboardscreens.length,
+            itemBuilder: (context, index) =>
+                onboardscreens.elementAtOrNull(index),
+            scrollDirection: Axis.horizontal,
             pageSnapping: true,
             physics: ClampingScrollPhysics(),
           ),
