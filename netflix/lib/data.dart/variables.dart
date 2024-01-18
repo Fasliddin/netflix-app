@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/components/onboarding.dart';
 
-bool visibility=false;
-PageController pageControllera=PageController();
+bool visibility = false;
+PageController pageControllera = PageController();
+dynamic currentPage=0;
 
-List <Widget>onboardscreens=[
+List<Widget> onboardscreens = [
   first(),
   second(),
-  second(),
-  first(),
+  three(),
 ];

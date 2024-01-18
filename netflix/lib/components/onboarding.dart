@@ -1,6 +1,8 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/data.dart/colors.dart';
 import 'package:netflix/data.dart/variables.dart';
+import 'package:netflix/screens/signIn_screen.dart';
 
 class first extends StatefulWidget {
   const first({super.key});
@@ -46,7 +48,7 @@ class _firstState extends State<first> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Watch anywhere. Cancel anytime.",
+                  "Watch anywhere, Cancel anytime.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15,
@@ -55,6 +57,8 @@ class _firstState extends State<first> {
                   ),
                 ),
               ),
+              DotsIndicator(
+                  dotsCount: onboardscreens.length, position: currentPage),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
@@ -71,21 +75,34 @@ class _firstState extends State<first> {
                         pageControllera.nextPage(
                             duration: Duration(seconds: 1),
                             curve: Curves.linear);
+                        if (currentPage != 3) {
+                          currentPage++;
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignIn(),
+                            ),
+                          );
+                        }
+                        ;
                       });
                     },
                     child: Center(
                       child: SizedBox(
-                          width: double.infinity,
-                          height: 42,
-                          child: Center(
-                              child: Text(
+                        width: double.infinity,
+                        height: 42,
+                        child: Center(
+                          child: Text(
                             "GET STARTED",
                             style: TextStyle(
                               fontSize: 17,
                               color: Colors.white,
                               fontWeight: FontWeight.w400,
                             ),
-                          ))),
+                          ),
+                        ),
+                      ),
                     )),
               )
             ],
@@ -156,6 +173,8 @@ class _secondState extends State<second> {
                     ),
                   ),
                 ),
+                DotsIndicator(
+                    dotsCount: onboardscreens.length, position: currentPage),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
@@ -172,6 +191,132 @@ class _secondState extends State<second> {
                           pageControllera.nextPage(
                               duration: Duration(seconds: 1),
                               curve: Curves.linear);
+                          if (currentPage != 3) {
+                            currentPage++;
+                          } else {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignIn()));
+                          }
+                          ;
+                        });
+                      },
+                      child: Center(
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 42,
+                            child: Center(
+                                child: Text(
+                              "GET STARTED",
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ))),
+                      )),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class three extends StatefulWidget {
+  const three({super.key});
+
+  @override
+  State<three> createState() => _threeState();
+}
+
+class _threeState extends State<three> {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Spacer(),
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 300,
+            child: Image.asset(
+              "assets/images/home.png",
+              fit: BoxFit.cover,
+              width: size.width - 50,
+              height: 200,
+            ),
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "No pesky\n contracts",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 35,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Join today, cancel anytime.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[100],
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                DotsIndicator(
+                  dotsCount: onboardscreens.length,
+                  position: currentPage,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape: MaterialStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        backgroundColor: MaterialStatePropertyAll(Colors.red),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          pageControllera.nextPage(
+                              duration: Duration(seconds: 1),
+                              curve: Curves.linear);
+                          if (currentPage != 2) {
+                            currentPage++;
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignIn(),
+                              ),
+                            );
+                          }
+                          ;
                         });
                       },
                       child: Center(

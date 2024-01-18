@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:netflix/components/appbar.dart';
 import 'package:netflix/data.dart/colors.dart';
 import 'package:netflix/data.dart/variables.dart';
+import 'package:netflix/screens/signIn_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -12,6 +14,13 @@ class OnBoarding extends StatefulWidget {
 
 class _OnBoardingState extends State<OnBoarding> {
   SampleItem? selectedMenu;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,6 +36,7 @@ class _OnBoardingState extends State<OnBoarding> {
         actions: [
           TextButton(
             onPressed: () {
+              launchUrl(Uri.parse("https://help.netflix.com/legal/privacy"));
               print(
                 size.width,
               );
@@ -42,7 +52,14 @@ class _OnBoardingState extends State<OnBoarding> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SignIn(),
+                ),
+              );
+            },
             child: Text(
               "Sign in".toUpperCase(),
               style: TextStyle(
